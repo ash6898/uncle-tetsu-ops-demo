@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Uncle Tetsu Operations Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="brandmark">て</div><div><strong>Uncle Tetsu</strong><span>Operations</span></div></div>
+    <nav id="nav">
+      <button class="nav-item active" data-page="dashboard"><span>▦</span> Dashboard</button>
+      <button class="nav-item" data-page="orders"><span>▤</span> Store Orders <b>6</b></button>
+      <button class="nav-item" data-page="factory"><span>▥</span> Factory Plan</button>
+      <button class="nav-item" data-page="tickets"><span>✓</span> Issue Tickets <b>4</b></button>
+      <button class="nav-item" data-page="recipes"><span>◫</span> Recipes & Batches</button>
+    </nav>
+    <div class="side-note"><strong>Demo workspace</strong><p>UI preview with sample data. No data is saved.</p></div>
+    <div class="user"><div class="avatar">AB</div><div><strong>Aakash B.</strong><span>Project demo</span></div><span>•••</span></div>
+  </aside>
+
+  <main>
+    <header><button id="menuBtn" class="menu">☰</button><div><span class="crumb">Operations / <span id="crumb">Dashboard</span></span></div><div class="header-actions"><button class="icon-btn">⌕</button><button class="icon-btn bell">♧<i></i></button><div class="avatar small">LT</div><div class="profile"><strong>Leti</strong><span>Operations manager</span></div></div></header>
+
+    <section class="page active" id="dashboard">
+      <div class="page-head"><div><p class="eyebrow">WEDNESDAY, SEPTEMBER 16</p><h1>Good morning, Leti</h1><p>Here is what needs attention across stores and the factory today.</p></div><button class="primary" data-action="new-order">＋ New store order</button></div>
+      <div class="stats">
+        <article><div class="stat-icon blue">▤</div><div><span>Orders this week</span><strong>24</strong><small class="up">↑ 12%</small></div></article>
+        <article><div class="stat-icon yellow">◷</div><div><span>Awaiting approval</span><strong>6</strong><small>3 due today</small></div></article>
+        <article><div class="stat-icon red">!</div><div><span>Open issues</span><strong>4</strong><small class="warn">1 high priority</small></div></article>
+        <article><div class="stat-icon green">✓</div><div><span>On-time delivery</span><strong>96%</strong><small class="up">↑ 2.4%</small></div></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="panel orders-panel"><div class="panel-head"><div><h2>Upcoming store orders</h2><p>Next deliveries requiring factory prep</p></div><button class="link" data-go="orders">View all →</button></div><div class="table-wrap"><table><thead><tr><th>STORE</th><th>DELIVERY</th><th>BATCHES</th><th>STATUS</th></tr></thead><tbody id="dashOrders"></tbody></table></div></article>
+        <article class="panel"><div class="panel-head"><div><h2>Issues needing attention</h2><p>Assigned or recently updated</p></div><button class="link" data-go="tickets">View all →</button></div><div id="issueList" class="issue-list"></div></article>
+      </div>
+      <article class="panel production"><div class="panel-head"><div><h2>This week's production</h2><p>Batch totals across confirmed store orders</p></div><span class="updated">Updated 8:42 AM</span></div><div class="prod-row"><div><span>Original cheesecake</span><strong>84 batches</strong></div><div class="bar"><i style="width:84%"></i></div><span>420 cakes</span></div><div class="prod-row"><div><span>Chocolate cheesecake</span><strong>38 batches</strong></div><div class="bar chocolate"><i style="width:52%"></i></div><span>190 cakes</span></div><div class="prod-row"><div><span>Cheese tarts</span><strong>26 batches</strong></div><div class="bar gold"><i style="width:35%"></i></div><span>780 tarts</span></div></article>
+    </section>
+
+    <section class="page" id="orders">
+      <div class="page-head"><div><p class="eyebrow">STORE OPERATIONS</p><h1>Store orders</h1><p>Create, review and track weekly orders from every location.</p></div><button class="primary" data-action="new-order">＋ New store order</button></div>
+      <div class="toolbar"><div class="search">⌕ <input id="orderSearch" placeholder="Search store or order..." /></div><select id="orderStatus"><option value="all">All statuses</option><option>Draft</option><option>Submitted</option><option>Approved</option><option>In production</option></select><button class="secondary">⇩ Export</button></div>
+      <article class="panel"><div class="table-wrap"><table class="full"><thead><tr><th>ORDER</th><th>STORE</th><th>DELIVERY DATE</th><th>ORIGINAL</th><th>CHOCOLATE</th><th>PACKAGING</th><th>STATUS</th><th></th></tr></thead><tbody id="ordersTable"></tbody></table></div></article>
+    </section>
+
+    <section class="page" id="factory">
+      <div class="page-head"><div><p class="eyebrow">FACTORY OPERATIONS</p><h1>Factory production plan</h1><p>Consolidated requirements from approved store orders.</p></div><div><button class="secondary">⇩ Export worksheet</button> <button class="primary">Print plan</button></div></div>
+      <div class="factory-banner"><div><strong>Production run: Sep 17-18</strong><span>12 approved orders · Delivery window Sep 18-19</span></div><div class="banner-metric"><span>Total recipe batches</span><strong>148</strong></div><div class="banner-metric"><span>Estimated cakes</span><strong>1,390</strong></div></div>
+      <div class="tabs"><button class="active">Ingredients</button><button>Packaging</button><button>By store</button></div>
+      <article class="panel"><div class="panel-head"><div><h2>Aggregated ingredient requirements</h2><p>Whole purchasing units are rounded up; exact calculated quantity is preserved.</p></div><span class="status approved">● 12 orders included</span></div><div class="table-wrap"><table class="full"><thead><tr><th>INGREDIENT</th><th>CALCULATED NEED</th><th>STOCK UNIT</th><th>ORDER QTY</th><th>ON HAND</th><th>TO PURCHASE</th></tr></thead><tbody>
+      <tr><td><strong>Cream cheese</strong><small>Dairy · refrigerated</small></td><td>412.6 kg</td><td>10 kg case</td><td><strong>42 cases</strong><small>420 kg</small></td><td>18 cases</td><td><span class="purchase">24 cases</span></td></tr>
+      <tr><td><strong>Eggs</strong><small>Large, grade A</small></td><td>5,846 units</td><td>180 / case</td><td><strong>33 cases</strong><small>5,940 eggs</small></td><td>12 cases</td><td><span class="purchase">21 cases</span></td></tr>
+      <tr><td><strong>Unsalted butter</strong><small>Dairy · refrigerated</small></td><td>108.4 kg</td><td>5 kg case</td><td><strong>22 cases</strong><small>110 kg</small></td><td>9 cases</td><td><span class="purchase">13 cases</span></td></tr>
+      <tr><td><strong>Cake flour</strong><small>Dry goods</small></td><td>167.2 kg</td><td>20 kg bag</td><td><strong>9 bags</strong><small>180 kg</small></td><td>5 bags</td><td><span class="purchase low">4 bags</span></td></tr>
+      <tr><td><strong>Granulated sugar</strong><small>Dry goods</small></td><td>131.8 kg</td><td>20 kg bag</td><td><strong>7 bags</strong><small>140 kg</small></td><td>8 bags</td><td><span class="enough">In stock</span></td></tr>
+      </tbody></table></div></article>
+      <div class="note"><strong>ⓘ Rounding rule</strong><p>Purchase quantities always round up to the next complete supplier unit. Exact requirements remain visible for production and variance tracking.</p></div>
+    </section>
+
+    <section class="page" id="tickets">
+      <div class="page-head"><div><p class="eyebrow">ISSUE MANAGEMENT</p><h1>Issue tickets</h1><p>Report, assign and resolve issues across every location.</p></div><button class="primary" data-action="new-ticket">＋ Report an issue</button></div>
+      <div class="ticket-metrics"><div><strong>4</strong><span>Open</span></div><div><strong>2</strong><span>In progress</span></div><div><strong>1</strong><span>Waiting</span></div><div><strong>18h</strong><span>Avg. resolution</span></div></div>
+      <div class="ticket-layout"><aside class="ticket-filters"><strong>FILTERS</strong><button class="active">All issues <b>7</b></button><button>My issues <b>3</b></button><button>High priority <b>1</b></button><hr><strong>STATUS</strong><label><input type="checkbox" checked> Open</label><label><input type="checkbox" checked> In progress</label><label><input type="checkbox" checked> Waiting</label><label><input type="checkbox"> Done</label></aside><div id="ticketCards" class="ticket-cards"></div></div>
+    </section>
+
+    <section class="page" id="recipes">
+      <div class="page-head"><div><p class="eyebrow">PRODUCTION SETUP</p><h1>Recipes & batches</h1><p>Reference batch yields and production units used in store ordering.</p></div><button class="primary">＋ Add recipe</button></div>
+      <div class="recipe-grid">
+        <article class="recipe-card"><div class="cake original">◉</div><div><span class="tag">ACTIVE</span><h2>Original Cheesecake</h2><p>Signature Japanese soufflé cheesecake</p><dl><div><dt>Full batch</dt><dd>5 cakes</dd></div><div><dt>Half batch</dt><dd>2.5 cakes</dd></div><div><dt>Prep time</dt><dd>45 min</dd></div></dl><button class="secondary wide">View recipe</button></div></article>
+        <article class="recipe-card"><div class="cake choc">◉</div><div><span class="tag">ACTIVE</span><h2>Chocolate Cheesecake</h2><p>Chocolate Japanese soufflé cheesecake</p><dl><div><dt>Full batch</dt><dd>5 cakes</dd></div><div><dt>Half batch</dt><dd>2.5 cakes</dd></div><div><dt>Prep time</dt><dd>50 min</dd></div></dl><button class="secondary wide">View recipe</button></div></article>
+        <article class="recipe-card"><div class="cake tart">✿</div><div><span class="tag">ACTIVE</span><h2>Cheese Tarts</h2><p>Flaky pastry with signature cheese filling</p><dl><div><dt>Full batch</dt><dd>30 tarts</dd></div><div><dt>Half batch</dt><dd>15 tarts</dd></div><div><dt>Prep time</dt><dd>35 min</dd></div></dl><button class="secondary wide">View recipe</button></div></article>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modal"><div class="modal"><button class="close" id="closeModal">×</button><div id="modalBody"></div></div></div>
+  <div class="toast" id="toast">Demo item added. This preview does not save data.</div>
+  <script src="app.js"></script>
+</body>
+</html>
