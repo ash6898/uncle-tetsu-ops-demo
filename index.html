@@ -39,9 +39,29 @@
     </section>
 
     <section class="page" id="orders">
-      <div class="page-head"><div><p class="eyebrow">STORE OPERATIONS</p><h1>Store orders</h1><p>Create, review and track weekly orders from every location.</p></div><button class="primary" data-action="new-order">＋ New store order</button></div>
-      <div class="toolbar"><div class="search">⌕ <input id="orderSearch" placeholder="Search store or order..." /></div><select id="orderStatus"><option value="all">All statuses</option><option>Draft</option><option>Submitted</option><option>Approved</option><option>In production</option></select><button class="secondary">⇩ Export</button></div>
-      <article class="panel"><div class="table-wrap"><table class="full"><thead><tr><th>ORDER</th><th>STORE</th><th>DELIVERY DATE</th><th>ORIGINAL</th><th>CHOCOLATE</th><th>PACKAGING</th><th>STATUS</th><th></th></tr></thead><tbody id="ordersTable"></tbody></table></div></article>
+      <div class="page-head orders-head"><div><p class="eyebrow">STORE OPERATIONS</p><h1>Build a store order</h1><p>Choose products and packaging, then review everything before submitting.</p></div><div class="order-progress"><span class="active">1</span><b>Build order</b><i></i><span>2</span><b>Review</b></div></div>
+      <div class="order-context panel">
+        <label><span>Ordering store</span><select id="orderStore"><option>Yonge & Sheppard</option><option>Union Station</option><option>Pacific Mall</option><option>Square One</option><option>Richmond BC</option><option>Markham</option></select></label>
+        <label><span>Requested delivery</span><input id="deliveryDate" type="date" value="2026-09-18"></label>
+        <div class="cutoff"><span class="cutoff-icon">✓</span><div><strong>Delivery window available</strong><small>Order by 2:00 PM today for this date</small></div></div>
+      </div>
+      <div class="order-builder">
+        <div class="catalog-column">
+          <div class="catalog-toolbar"><div><h2>Product catalog</h2><p>Add production batches and store supplies.</p></div><div class="catalog-tabs" id="catalogTabs"><button class="active" data-category="all">All</button><button data-category="bakery">Bakery</button><button data-category="packaging">Packaging</button></div></div>
+          <div class="product-list" id="productCatalog"></div>
+          <article class="panel recent-orders"><div class="panel-head"><div><h2>Recent store orders</h2><p>Track submitted and in-progress orders</p></div><button class="link" id="toggleHistory">Show orders ↓</button></div><div class="table-wrap collapsed" id="orderHistory"><table class="full"><thead><tr><th>ORDER</th><th>STORE</th><th>DELIVERY</th><th>STATUS</th></tr></thead><tbody id="ordersTable"></tbody></table></div></article>
+        </div>
+        <aside class="order-summary panel">
+          <div class="summary-head"><div><span class="summary-kicker">CURRENT ORDER</span><h2>Order summary</h2></div><button class="clear-cart" id="clearCart">Clear</button></div>
+          <div class="summary-store"><span>Store</span><strong id="summaryStore">Yonge & Sheppard</strong><small id="summaryDelivery">Delivery Fri, Sep 18</small></div>
+          <div id="cartLines" class="cart-lines"></div>
+          <div class="cart-empty" id="cartEmpty"><div>▤</div><strong>Your order is empty</strong><p>Use the quantity controls to add products.</p></div>
+          <div class="summary-totals" id="summaryTotals"><div><span>Product lines</span><strong id="lineCount">0</strong></div><div><span>Production batches</span><strong id="batchTotal">0</strong></div><div><span>Estimated units</span><strong id="unitTotal">0</strong></div></div>
+          <label class="order-note"><span>Note for the factory <small>Optional</small></span><textarea id="orderNote" placeholder="Delivery instructions or special requests"></textarea></label>
+          <button class="primary submit-order" id="reviewOrder" disabled>Review & submit order <span>→</span></button>
+          <p class="save-note">This demo uses sample data. Nothing is saved.</p>
+        </aside>
+      </div>
     </section>
 
     <section class="page" id="factory">
